@@ -10,14 +10,17 @@ function App() {
 
   const calculate = () => {
     try {
-      setEquation(eval(equation));
+      const result = eval(equation); // Evaluate the equation
+      setEquation(String(result)); // Ensure the result is always a string
     } catch {
       setEquation("Error");
     }
   };
 
   const handleClear = () => {
-    setEquation(equation.substring(0, equation.length - 1));
+    if (equation) {
+      setEquation(equation.substring(0, equation.length - 1)); // Safely remove the last character
+    }
   };
 
   const handleClearAll = () => {
